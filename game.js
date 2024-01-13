@@ -45,5 +45,25 @@ function game() {
     }
 }
 
-game();
+//game();
+
+//constants
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
+
+const results = document.getElementById("results");
+
+//play rounds
+rockBtn.addEventListener('click', () => {
+    results.textContent = playRound("rock", getComputerChoice());
+});
+
+paperBtn.addEventListener('click', () => {
+    results.textContent = playRound("paper", getComputerChoice());
+});
+
+scissorsBtn.addEventListener('click', () => {
+    results.textContent = playRound("scissors", getComputerChoice());
+});
 
