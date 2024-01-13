@@ -51,7 +51,18 @@ function game() {
     }
 }
 
-//game();
+function checkWinner() {
+    if (!won) {
+        if (playerWins == 5) {
+            winner.textContent = "Player is the winner!";
+            won = Boolean(true);
+        } else if (computerWins == 5) {
+            winner.textContent = "Computer is the winner!";
+            won = Boolean(true);
+        }
+    }
+}
+
 
 //constants
 const rockBtn = document.getElementById("rock");
@@ -65,6 +76,9 @@ const computer = document.getElementById("computer");
 let playerWins = 0;
 let computerWins = 0;
 
+const winner = document.getElementById("winner");
+let won = Boolean(false);
+
 //possibly a way to iterate through the different buttons?
 
 //play rounds
@@ -72,7 +86,7 @@ rockBtn.addEventListener('click', () => {
     results.textContent = playRound("rock", getComputerChoice());
     player.textContent = playerWins;
     computer.textContent = computerWins;
-
+    checkWinner();
     console.log(playerWins);
     console.log(computerWins);
 });
@@ -81,11 +95,15 @@ paperBtn.addEventListener('click', () => {
     results.textContent = playRound("paper", getComputerChoice());
     player.textContent = playerWins;
     computer.textContent = computerWins;
+    checkWinner();
 });
 
 scissorsBtn.addEventListener('click', () => {
     results.textContent = playRound("scissors", getComputerChoice());
     player.textContent = playerWins;
     computer.textContent = computerWins;
+    checkWinner();
 });
+
+
 
