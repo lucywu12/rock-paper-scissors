@@ -18,20 +18,26 @@ function playRound(playerSelection, computerSelection) {
         return playRound(p, c); //replay round
     } else if (p == "rock") {
         if (computerSelection == "scissors") {
+            playerWins++;
             return "You Win! Rock beats Scissors";
         } else {
+            computerWins++;
             return "You Lose! Paper beats Rock";
         }
     } else if (p == "paper") {
         if (computerSelection == "rock") {
+            playerWins++;
             return "You Win! Paper beats Rock";
         } else {
+            computerWins++;
             return "You Lose! Scissors beats Paper";
         }
     } else {
         if (computerSelection == "rock") {
+            computerWins++;
             return "You Lose! Rock beats Scissors";
         } else {
+            playerWins++;
             return "You Win! Scissors beats Paper"
         }
     }
@@ -53,17 +59,33 @@ const paperBtn = document.getElementById("paper");
 const scissorsBtn = document.getElementById("scissors");
 
 const results = document.getElementById("results");
+const player = document.getElementById("player");
+const computer = document.getElementById("computer");
+
+let playerWins = 0;
+let computerWins = 0;
+
+//possibly a way to iterate through the different buttons?
 
 //play rounds
 rockBtn.addEventListener('click', () => {
     results.textContent = playRound("rock", getComputerChoice());
+    player.textContent = playerWins;
+    computer.textContent = computerWins;
+
+    console.log(playerWins);
+    console.log(computerWins);
 });
 
 paperBtn.addEventListener('click', () => {
     results.textContent = playRound("paper", getComputerChoice());
+    player.textContent = playerWins;
+    computer.textContent = computerWins;
 });
 
 scissorsBtn.addEventListener('click', () => {
     results.textContent = playRound("scissors", getComputerChoice());
+    player.textContent = playerWins;
+    computer.textContent = computerWins;
 });
 
